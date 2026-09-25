@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cat-templates",
+    "name": "Website Templates",
+    "slug": "website-templates",
+    "icon": "◈",
+    "image": "",
+    "description": "Thoughtful starting points for your next website."
+  },
+  {
+    "id": "cat-design",
+    "name": "Design Resources",
+    "slug": "design-resources",
+    "icon": "✳",
+    "image": "",
+    "description": "Ready-to-customize creative assets for your brand."
+  },
+  {
+    "id": "cat-productivity",
+    "name": "Productivity",
+    "slug": "productivity",
+    "icon": "▦",
+    "image": "",
+    "description": "Simple tools for more organized days."
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "prd-premium-template-pack",
+    "slug": "premium-template-pack",
+    "title": "Premium Template Pack",
+    "categoryId": "cat-templates",
+    "price": 1999,
+    "oldPrice": 2999,
+    "shortDescription": "A polished head start for your next great website.",
+    "description": "A polished head start for your next great website.\n\nThis is an example listing included with your store. Replace it with your own product details in the visual admin before accepting orders.",
+    "features": [
+      "Responsive page layouts",
+      "Editable HTML and CSS",
+      "Organized design components"
+    ],
+    "included": [
+      "Template source files",
+      "Quick-start guide",
+      "Example page layouts"
+    ],
+    "featured": true,
+    "image": "assets/images/products/templates.webp",
+    "seoTitle": "Premium Template Pack | Muneej Digital",
+    "seoDescription": "A polished head start for your next great website.",
+    "createdAt": "2026-09-25T00:00:00.000Z",
+    "updatedAt": "2026-09-25T00:00:00.000Z"
+  },
+  {
+    "id": "prd-social-media-kit",
+    "slug": "social-media-kit",
+    "title": "Social Media Kit",
+    "categoryId": "cat-design",
+    "price": 999,
+    "oldPrice": 1499,
+    "shortDescription": "Make your feed feel like your brand.",
+    "description": "Make your feed feel like your brand.\n\nThis is an example listing included with your store. Replace it with your own product details in the visual admin before accepting orders.",
+    "features": [
+      "Coordinated post layouts",
+      "Story design templates",
+      "Editable colors and typography"
+    ],
+    "included": [
+      "Social post designs",
+      "Story layouts",
+      "Customization guide"
+    ],
+    "featured": false,
+    "image": "assets/images/products/social.webp",
+    "seoTitle": "Social Media Kit | Muneej Digital",
+    "seoDescription": "Make your feed feel like your brand.",
+    "createdAt": "2026-09-25T00:00:00.000Z",
+    "updatedAt": "2026-09-25T00:00:00.000Z"
+  },
+  {
+    "id": "prd-focus-planner",
+    "slug": "focus-planner",
+    "title": "The Focus Planner",
+    "categoryId": "cat-productivity",
+    "price": 799,
+    "oldPrice": null,
+    "shortDescription": "A little structure. A lot more room to create.",
+    "description": "A little structure. A lot more room to create.\n\nThis is an example listing included with your store. Replace it with your own product details in the visual admin before accepting orders.",
+    "features": [
+      "Weekly planning pages",
+      "Project goal tracking",
+      "Reusable daily layouts"
+    ],
+    "included": [
+      "Digital planner PDF",
+      "Printable planner pages",
+      "Getting-started notes"
+    ],
+    "featured": false,
+    "image": "assets/images/products/planner.webp",
+    "seoTitle": "The Focus Planner | Muneej Digital",
+    "seoDescription": "A little structure. A lot more room to create.",
+    "createdAt": "2026-09-25T00:00:00.000Z",
+    "updatedAt": "2026-09-25T00:00:00.000Z"
+  }
+]
