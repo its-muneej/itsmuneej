@@ -22,5 +22,15 @@
     "icon": "▦",
     "image": "",
     "description": "Simple tools for more organized days."
+  },
+  {
+    "id": "23304b52-597c-474c-952f-d2676e2372c8",
+    "createdAt": "2026-09-25T14:31:23.534Z",
+    "updatedAt": "2026-09-25T14:31:23.534Z",
+    "name": "new",
+    "description": "sdsdsddsdsd",
+    "icon": "▦",
+    "image": "assets/images/categories/23304b52-597c-474c-952f-d2676e2372c8-2005b800.webp",
+    "slug": "new"
   }
 ]
