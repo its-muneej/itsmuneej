@@ -94,5 +94,23 @@
     "seoDescription": "",
     "image": "assets/images/products/5482ffae-fc9e-46f3-83d9-4470124e7249-6f8834d2.webp",
     "slug": "genflume-ai"
+  },
+  {
+    "id": "d863adda-d7dc-49c8-83ca-741db2b43b2d",
+    "createdAt": "2026-09-25T14:24:15.285Z",
+    "updatedAt": "2026-09-25T14:24:15.285Z",
+    "title": "genflume",
+    "categoryId": "cat-templates",
+    "price": 11111,
+    "oldPrice": null,
+    "shortDescription": "11",
+    "description": "11",
+    "features": [],
+    "included": [],
+    "featured": false,
+    "seoTitle": "",
+    "seoDescription": "",
+    "image": "assets/images/products/d863adda-d7dc-49c8-83ca-741db2b43b2d-6fa5d962.webp",
+    "slug": "genflume"
   }
 ]
