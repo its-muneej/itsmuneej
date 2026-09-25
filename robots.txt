@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://sheprints3d.pk/sitemap.xml
