@@ -1,0 +1,87 @@
+{
+  "generator": "built-in image_gen.imagegen",
+  "project": "ShePrints3D.pk",
+  "assetCount": 16,
+  "assets": [
+    {
+      "name": "hero",
+      "prompt": "Use case: product-mockup. Asset type: website hero, wide landscape 3:2. Premium realistic industrial product photography for a 3D printing studio. A futuristic but mechanically plausible open-frame desktop 3D printer on a dark charcoal studio floor, actively printing a large elegant sculptural soft-violet ribbed looping arch phone stand. The printed form is an elongated continuous U-shaped arch with a gently curled front lip, matte PLA and visible fine horizontal layer texture. Printer and object occupy center-right and right of the frame, with darker simple negative space at left for website copy. Restrained lavender highlights, warm ivory softbox reflections, cinematic yet credible technical details. Beautiful dramatic softbox lighting, subtle atmospheric depth, high resolution commercial photograph. No words, no logos, no watermark.",
+      "path": "assets/images/hero/hero.webp"
+    },
+    {
+      "name": "phone-stand",
+      "prompt": "Use case: product-mockup. Premium realistic commercial product photography for a cohesive 3D printing studio website. Restrained soft violet and lavender, charcoal, warm ivory palette. Matte PLA with fine visible horizontal 3D-print layer texture, elegant sculptural industrial design. Precise clean objects, realistic proportions and beautifully controlled softbox studio lighting. No logos, no watermark, no words or labels unless explicitly specified. Square catalog photograph on a warm ivory seamless studio backdrop. One soft violet ribbed arch phone stand, empty without phone. The phone stand is an elongated continuous U-shaped looping arch made from a thick ribbon, with a high rear curve and gently curled front lip for a phone to rest on. It has densely ribbed lines along its curved surface. Full object centered with ample margin, three-quarter angle, soft grounded shadow.",
+      "path": "assets/images/products/phone-stand.webp"
+    },
+    {
+      "name": "headphone-stand",
+      "prompt": "Use case: product-mockup. Premium realistic commercial product photography for a cohesive 3D printing studio website. Restrained soft violet and lavender, charcoal, warm ivory palette. Matte PLA with fine visible horizontal 3D-print layer texture, elegant sculptural industrial design. Precise clean objects, realistic proportions and beautifully controlled softbox studio lighting. No logos, no watermark, no words or labels unless explicitly specified. Square catalog photograph on warm ivory seamless studio backdrop. A single sculptural headphone stand with a softly rounded violet saddle at the top, a tall violet ribbed tapered vertical support and a dark charcoal oval weighted base. Empty without headphones. Full object centered with ample margin and soft grounded shadow.",
+      "path": "assets/images/products/headphone-stand.webp"
+    },
+    {
+      "name": "controller-stand",
+      "prompt": "Use case: product-mockup. Premium realistic commercial product photography for a cohesive 3D printing studio website. Restrained soft violet and lavender, charcoal, warm ivory palette. Matte PLA with fine visible horizontal 3D-print layer texture, elegant sculptural industrial design. Precise clean objects, realistic proportions and beautifully controlled softbox studio lighting. No logos, no watermark, no words or labels unless explicitly specified. Square catalog photograph on warm ivory seamless studio backdrop. One elegant soft violet gaming controller cradle holding one generic unbranded charcoal controller. The controller has two symmetrical analog sticks and clean unlabeled buttons. Low-profile ribbed cradle, believable supportive geometry. Full product centered in three-quarter angle, soft grounded shadow.",
+      "path": "assets/images/products/controller-stand.webp"
+    },
+    {
+      "name": "cable-organizer",
+      "prompt": "Use case: product-mockup. Premium realistic commercial product photography for a cohesive 3D printing studio website. Restrained soft violet and lavender, charcoal, warm ivory palette. Matte PLA with fine visible horizontal 3D-print layer texture, elegant sculptural industrial design. Precise clean objects, realistic proportions and beautifully controlled softbox studio lighting. No logos, no watermark, no words or labels unless explicitly specified. Square catalog photograph on warm ivory seamless studio backdrop. A carefully arranged set of three small soft violet and charcoal rounded cable clips, threaded with three subtle slender black cables running naturally across the surface. Crisp practical cable management shapes, ribbed 3D printed texture, three-quarter close view. Centered arrangement with ample empty margin, soft grounded shadows.",
+      "path": "assets/images/products/cable-organizer.webp"
+    },
+    {
+      "name": "desk-organizer",
+      "prompt": "Use case: product-mockup. Premium realistic commercial product photography for a cohesive 3D printing studio website. Restrained soft violet and lavender, charcoal, warm ivory palette. Matte PLA with fine visible horizontal 3D-print layer texture, elegant sculptural industrial design. Precise clean objects, realistic proportions and beautifully controlled softbox studio lighting. No logos, no watermark, no words or labels unless explicitly specified. Square catalog photograph on warm ivory seamless studio backdrop. One elegant soft violet modular ribbed desk organizer, made of a tall rounded cylindrical pen cup holding two simple charcoal pens, a lower curved compartment, and an attached shallow rectangular catch-all tray. Beautifully unified functional proportions. Full object centered in three-quarter view with ample margin and soft grounded shadow.",
+      "path": "assets/images/products/desk-organizer.webp"
+    },
+    {
+      "name": "nameplate",
+      "prompt": "Use case: product-mockup. Premium realistic commercial product photography for a cohesive 3D printing studio website. Restrained soft violet and lavender, charcoal, warm ivory palette. Matte PLA with fine visible horizontal 3D-print layer texture, elegant sculptural industrial design. Precise clean objects, realistic proportions and beautifully controlled softbox studio lighting. No logos, no watermark, no words or labels unless explicitly specified. Square catalog photograph on warm ivory seamless studio backdrop. A personalized soft violet 3D printed desk nameplate, low wide freestanding plaque with rounded ends on an integrated small charcoal base. The front has precisely formed large raised ivory uppercase letters reading exactly \"YOUR NAME\". All letters legible and evenly spaced. Only text is YOUR NAME. Full object centered in three-quarter view with ample margin and soft grounded shadow.",
+      "path": "assets/images/products/nameplate.webp"
+    },
+    {
+      "name": "keychain",
+      "prompt": "Use case: product-mockup. Premium realistic commercial product photography for a cohesive 3D printing studio website. Restrained soft violet and lavender, charcoal, warm ivory palette. Matte PLA with fine visible horizontal 3D-print layer texture, elegant sculptural industrial design. Precise clean objects, realistic proportions and beautifully controlled softbox studio lighting. No logos, no watermark, no words or labels unless explicitly specified. Square catalog photograph on warm ivory seamless studio backdrop. One small lavender geometric keychain tag, rounded hexagon form with a subtle raised abstract initial-like geometric decorative symbol that is not a readable letter, with a genuine silver metal split ring through the small reinforced hole. Close product view revealing layer texture, centered with generous margin and soft grounded shadow. No words or letters.",
+      "path": "assets/images/products/keychain.webp"
+    },
+    {
+      "name": "enclosure",
+      "prompt": "Use case: product-mockup. Premium realistic commercial product photography for a cohesive 3D printing studio website. Restrained soft violet and lavender, charcoal, warm ivory palette. Matte PLA with fine visible horizontal 3D-print layer texture, elegant sculptural industrial design. Precise clean objects, realistic proportions and beautifully controlled softbox studio lighting. No logos, no watermark, no words or labels unless explicitly specified. Portrait-oriented square product concept photograph on a charcoal studio background. One exploded vertically aligned stack of a small custom electronic enclosure. At top: violet rounded-rectangle enclosure lid with a clean rectangular display window; below it: a small green PCB with believable generic electronic components and four mounting holes; below it: four short violet mounting posts and a compact black battery; at bottom: the matching violet open-bottom housing tray. Each component floats separately, exactly aligned into a logical assembly. Cohesive clean industrial product visualization, restrained lavender rim light, warm ivory highlights. Stylized product concept only, no labels or engineering dimension markings.",
+      "path": "assets/images/projects/enclosure.webp"
+    },
+    {
+      "name": "workspace",
+      "prompt": "Use case: photorealistic-natural. Wide landscape editorial photograph of a thoughtful 3D product-design desk in a small independent studio. A monitor shows a luminous lavender CAD model of an elegant ribbed looping arch phone stand on a dark clean interface, without readable words. A compact open-frame 3D printer and a few soft violet prototype components are on the desk. An adult woman's hands naturally hold a small violet prototype at the desk; the person is cropped above the forearms, no face visible. Premium contemporary workshop, warm natural daylight with subtle violet studio accents, charcoal equipment and warm ivory desk surface. Authentic lived-in but tidy working environment, fine visible printed PLA texture. No logos, no watermark, no readable text.",
+      "path": "assets/images/about/workspace.webp"
+    },
+    {
+      "name": "design",
+      "prompt": "Use case: stylized-concept. Square premium product design study on a charcoal background. Same single elegant ribbed looping arch phone stand shown as a refined graphite pencil sketch on a dark tinted drafting surface at left and as a luminous fine violet CAD wireframe model at right, two views of the same precise form with clean airy layout. The phone stand is an elongated continuous U-shaped looping arch made from a thick ribbon, with a high rear curve and gently curled front lip for a phone to rest on. It has densely ribbed lines along its curved surface. Beautiful soft lavender technical wireframe edges with clear curved ribbing, graphite construction lines. Restrained industrial design presentation. No words, no labels, no numbers, no logos, no watermark.",
+      "path": "assets/images/services/design.webp"
+    },
+    {
+      "name": "macro",
+      "prompt": "Use case: product-mockup. Premium realistic commercial product photography for a cohesive 3D printing studio website. Restrained soft violet and lavender, charcoal, warm ivory palette. Matte PLA with fine visible horizontal 3D-print layer texture, elegant sculptural industrial design. Precise clean objects, realistic proportions and beautifully controlled softbox studio lighting. No logos, no watermark, no words or labels unless explicitly specified. Wide landscape extreme macro close-up photograph of a real brass FDM 3D printer nozzle depositing thin melted soft violet filament into precise stacked horizontal layers. The nozzle nearly touches the current layer, believable mechanical metal heatblock and nearby cooling components visible above, background fades into dark charcoal. Very shallow depth of field, dramatic precise focus on brass tip and fresh violet layer, restrained lavender reflections and warm ivory highlights. Realistic mechanical detail, not abstract.",
+      "path": "assets/images/services/macro.webp"
+    },
+    {
+      "name": "repair",
+      "prompt": "Use case: product-mockup. Premium realistic commercial product photography for a cohesive 3D printing studio website. Restrained soft violet and lavender, charcoal, warm ivory palette. Matte PLA with fine visible horizontal 3D-print layer texture, elegant sculptural industrial design. Precise clean objects, realistic proportions and beautifully controlled softbox studio lighting. No logos, no watermark, no words or labels unless explicitly specified. Wide landscape equal-half diptych with absolutely no border or labels. Identical charcoal studio background and consistent camera angle and lighting in both halves. Left half: one small simple violet plastic L-shaped mounting bracket broken into two clean pieces placed a small distance apart. Right half: the same mounting bracket whole and redesigned with a slightly stronger rounded corner and a triangular support rib. Both have matching two screw mounting holes and the same material and dimensions. Deliberate clear before and after product comparison, soft grounded shadows, no text.",
+      "path": "assets/images/projects/repair.webp"
+    },
+    {
+      "name": "batch",
+      "prompt": "Use case: product-mockup. Premium realistic commercial product photography for a cohesive 3D printing studio website. Restrained soft violet and lavender, charcoal, warm ivory palette. Matte PLA with fine visible horizontal 3D-print layer texture, elegant sculptural industrial design. Precise clean objects, realistic proportions and beautifully controlled softbox studio lighting. No logos, no watermark, no words or labels unless explicitly specified. Wide landscape photograph of precise orderly rows of matching small soft violet 3D printed electronics enclosures on a dark charcoal studio tabletop. About twenty-four identical rounded-rectangle enclosures with screw holes and subtle vents, evenly spaced in a diagonal grid receding into the background. Focus on front rows with gentle depth of field, satisfying production consistency, dark workshop atmosphere, restrained lavender rim light and warm ivory highlights. No labels or text.",
+      "path": "assets/images/projects/batch.webp"
+    },
+    {
+      "name": "failed-print",
+      "prompt": "Use case: product-mockup. Premium realistic commercial product photography for a cohesive 3D printing studio website. Restrained soft violet and lavender, charcoal, warm ivory palette. Matte PLA with fine visible horizontal 3D-print layer texture, elegant sculptural industrial design. Precise clean objects, realistic proportions and beautifully controlled softbox studio lighting. No logos, no watermark, no words or labels unless explicitly specified. Square playfully imperfect product photograph of a tangled soft violet filament spaghetti failed print on the dark build plate of a 3D printer. Several elegant curls and chaotic strands pile on top of an unfinished small rectangular purple base, dark charcoal printer frame blurred behind. The tangled filament is the clear subject, plausible real failed FDM print, artful studio lighting and visible strands, no words.",
+      "path": "assets/images/projects/failed-print.webp"
+    },
+    {
+      "name": "finished",
+      "prompt": "Use case: product-mockup. Premium realistic commercial product photography for a cohesive 3D printing studio website. Restrained soft violet and lavender, charcoal, warm ivory palette. Matte PLA with fine visible horizontal 3D-print layer texture, elegant sculptural industrial design. Precise clean objects, realistic proportions and beautifully controlled softbox studio lighting. No logos, no watermark, no words or labels unless explicitly specified. Square oversized premium product photograph of one completed soft violet ribbed looping arch phone stand on dark charcoal studio surface with seamless charcoal backdrop. The phone stand is an elongated continuous U-shaped looping arch made from a thick ribbon, with a high rear curve and gently curled front lip for a phone to rest on. It has densely ribbed lines along its curved surface. Full object centered, three-quarter angle, sculptural form fills most of frame but is not cropped. Dramatic softbox light with restrained lavender rim light and warm ivory highlights revealing fine layers. Empty stand without phone.",
+      "path": "assets/images/products/finished.webp"
+    }
+  ]
+}
