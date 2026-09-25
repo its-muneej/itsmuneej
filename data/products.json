@@ -76,23 +76,5 @@
     "seoDescription": "A little structure. A lot more room to create.",
     "createdAt": "2026-09-25T00:00:00.000Z",
     "updatedAt": "2026-09-25T00:00:00.000Z"
-  },
-  {
-    "id": "d863adda-d7dc-49c8-83ca-741db2b43b2d",
-    "createdAt": "2026-09-25T14:24:15.285Z",
-    "updatedAt": "2026-09-25T14:24:15.285Z",
-    "title": "genflume",
-    "categoryId": "cat-templates",
-    "price": 11111,
-    "oldPrice": null,
-    "shortDescription": "11",
-    "description": "11",
-    "features": [],
-    "included": [],
-    "featured": false,
-    "seoTitle": "",
-    "seoDescription": "",
-    "image": "assets/images/products/d863adda-d7dc-49c8-83ca-741db2b43b2d-6fa5d962.webp",
-    "slug": "genflume"
   }
 ]
