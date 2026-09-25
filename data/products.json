@@ -112,5 +112,23 @@
     "seoDescription": "",
     "image": "assets/images/products/d863adda-d7dc-49c8-83ca-741db2b43b2d-6fa5d962.webp",
     "slug": "genflume"
+  },
+  {
+    "id": "6af2a03c-e23a-4365-9a7f-61c1038ddc32",
+    "createdAt": "2026-09-25T14:29:10.724Z",
+    "updatedAt": "2026-09-25T14:29:10.724Z",
+    "title": "asdsadsadsadasdasdasdasd",
+    "categoryId": "cat-templates",
+    "price": 3333333,
+    "oldPrice": null,
+    "shortDescription": "sdsd",
+    "description": "sdsdsd",
+    "features": [],
+    "included": [],
+    "featured": false,
+    "seoTitle": "",
+    "seoDescription": "",
+    "image": "assets/images/products/6af2a03c-e23a-4365-9a7f-61c1038ddc32-c5da164d.webp",
+    "slug": "asdsadsadsadasdasdasdasd"
   }
 ]
