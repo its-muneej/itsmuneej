@@ -76,5 +76,23 @@
     "seoDescription": "A little structure. A lot more room to create.",
     "createdAt": "2026-09-25T00:00:00.000Z",
     "updatedAt": "2026-09-25T00:00:00.000Z"
+  },
+  {
+    "id": "5482ffae-fc9e-46f3-83d9-4470124e7249",
+    "createdAt": "2026-09-25T13:18:07.849Z",
+    "updatedAt": "2026-09-25T13:18:07.849Z",
+    "title": "GenFlume AI",
+    "categoryId": "cat-templates",
+    "price": 1999,
+    "oldPrice": 2500,
+    "shortDescription": "Genflume AI",
+    "description": "Full Description",
+    "features": [],
+    "included": [],
+    "featured": true,
+    "seoTitle": "",
+    "seoDescription": "",
+    "image": "assets/images/products/5482ffae-fc9e-46f3-83d9-4470124e7249-6f8834d2.webp",
+    "slug": "genflume-ai"
   }
 ]
