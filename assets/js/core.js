@@ -1,4 +1,6 @@
-export const WHATSAPP = '923044428162';
+import {loadSettings} from './settings.js';
+export let WHATSAPP = '923044428162';
+export function setWhatsAppNumber(number){WHATSAPP=number;}
 export const money = value => 'Rs. ' + Number(value).toLocaleString('en-PK', {maximumFractionDigits:2});
 export const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 export const base = new URL('../../', import.meta.url);
@@ -31,13 +33,13 @@ export function validateCatalog(products, categories) {
   for (const c of categories) if (typeof c.name !== 'string' || !c.name.trim()) throw new Error('A category name is missing.');
   return {products, categories};
 }
-export async function loadCatalog() {
+export async function loadCatalog(settings) {
   const values = await Promise.all(['products','categories'].map(async name => {
     const r = await fetch(url(`data/${name}.json`), {cache:'no-store'});
     if (!r.ok) throw new Error('The catalog could not be loaded. Please try again.');
     return r.json();
   }));
-  return validateCatalog(...values);
+  return {...validateCatalog(...values),settings:settings||await loadSettings()};
 }
 export const icons = {
  bag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 7h14l1 14H4L5 7Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg>',

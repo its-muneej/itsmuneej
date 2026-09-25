@@ -1,0 +1,20 @@
+MUNEEJ STORE — SITE DETAILS + PAGINATION UPDATE
+
+For your EXISTING GitHub store, use muneej-store-update.zip.
+
+1. Extract this ZIP. Do not upload the ZIP file itself.
+2. Open the same GitHub repository and publishing branch that currently run your store.
+3. Upload all extracted application files and folders into the existing site folder (repository root, or docs/ if that is your publishing folder), replacing matching files.
+4. Do not delete your repository, folders, data files, images, CNAME, or hosting configuration. This update package contains no data/ files and no product/category images; those remain in your repository.
+5. Commit the upload and wait for deployment.
+6. Hard-refresh your store and Admin (Ctrl+Shift+R / Cmd+Shift+R).
+7. Log in as usual, open the new Site Details tab, change your branding/details/WhatsApp number, connect GitHub, and click PUBLISH SITE DETAILS.
+8. Wait for deployment and use Check live store in the success dialog.
+
+Site Details is saved automatically to data/settings.json when you publish. You never create or edit that file manually. Until the first save, the original design and defaults are used. An existing settings.json is preserved by this update package.
+
+The collection now shows 30 products per page. Previous/Next appear only when there is more than one page. Changing a category or search starts at page 1. Your cart and existing product URLs are preserved.
+
+The full muneej-digital-store.zip includes starter products and is intended for a NEW installation. Do not overwrite your live catalog with its starter data.
+
+Your login credentials and GitHub authorization workflow are unchanged. No token is stored in this package. No backend, database, or build process is required.

@@ -4,13 +4,14 @@ Open **SETUP.html** for the illustrated, no-code setup guide.
 
 ## What is included
 
-- Responsive storefront, category filtering, search, reusable product.html?product=slug page.
+- Responsive storefront, 30 products per page with Previous/Next, category filtering, search, reusable product.html?product=slug page.
 - Add to Cart + Buy Now on every product card and detail page.
 - Local-storage cart, quantity controls, subtotals, live badge, removal and clear confirmation.
-- WhatsApp checkout to 923044428162, including every item, quantity and total. Opening WhatsApp never clears the cart.
+- WhatsApp checkout to the number in Site Details (initially 923044428162), including every item, quantity and total. Opening WhatsApp never clears the cart.
 - WhatsApp-only contact page, with no contact form.
 - /admin/ local login, visual product/category editors, image preview, add/edit/delete/preview.
-- Real GitHub REST publishing: image blob + JSON in one tree/commit; non-forced branch update.
+- Site Details tab: favicon, browser titles/meta description, header branding, homepage text/image/buttons, footer branding/text, and one global WhatsApp number.
+- Real GitHub REST publishing: image blobs + JSON (and HTML metadata for site settings) in one tree/commit; non-forced branch update.
 - Relative asset paths work on custom domains, user Pages sites, and repository subpaths.
 - HTML, CSS, ES module Vanilla JavaScript, JSON, local WebP images. No package installation, build process, database, or backend is required to host it.
 
@@ -32,6 +33,32 @@ This is a local convenience gate, not server-enforced authentication. Its verifi
 7. Back in Admin enter your owner, repository, publishing branch and folder. Paste the token into the password field, then Connect repository. It is sent only to api.github.com over HTTPS; it is never written to the source, JSON, localStorage, sessionStorage, cookies, URLs, or logs. Non-secret repository settings are remembered locally.
 8. Add Product → select image → enter details → Publish Product. Products and categories need no manual JSON or code changes. Repeat for categories. The UI shows a commit link and deployment activity. You can check whether the live catalog has caught up.
 9. After refresh, tab closure, navigation away from Admin, disconnect or logout, reconnect with a valid token. The fixed login is intentionally separate from GitHub authorization.
+
+## Updating an existing store without replacing your catalog
+
+Use **muneej-store-update.zip** for an existing installation. Extract it and upload its contents into the SAME site folder and publishing branch as the existing site. Replace the matching application files; do not delete the repository or existing folders. The update ZIP contains no data/ files or product/category images, so it does not replace your live catalog, images, or saved settings. Keep CNAME and any existing hosting configuration. If the store is inside docs/, upload into docs/.
+
+Wait for deployment, then hard-refresh the website and Admin (Ctrl+Shift+R on Windows/Linux or Cmd+Shift+R on Mac). The full **muneej-digital-store.zip** includes starter catalog data and is for a fresh installation; do not upload its starter data over an existing live catalog.
+
+## Editing site details without code
+
+1. Log in at /admin/, then open **Site Details**.
+2. Expand a section to edit the browser title, favicon, header, homepage, collection/contact text, footer, or WhatsApp details. Images preview immediately.
+3. Enter the WhatsApp number with its country code. Spaces and a leading + are accepted and normalized. This number controls all product Buy Now links, cart checkout, contact buttons, and footer WhatsApp links.
+4. Footer branding follows the header by default. Turn off that option to use separate footer branding. Use {year} in the copyright field to keep the year current.
+5. The homepage image uses the first featured product by default. Select another product or upload your own image; you can also override its caption. The image links to the selected product, with an automatic fallback if it is deleted.
+6. Connect GitHub as usual and click **PUBLISH SITE DETAILS**. Details, uploaded images, and the public HTML titles/descriptions/favicons are saved together in one commit. Products and categories are preserved. The new public data/settings.json is created automatically if absent.
+7. Wait for the host to deploy. The success dialog includes **Check live store**, which checks the settings as well as the catalog. Reconnect after refreshing Admin as usual.
+
+The website remains entirely static. Site settings contain only public branding/contact details, never a token. Browser hover cards may include the website domain; that address is set by hosting/domain configuration, not metadata. Product-specific SEO fields in each product editor still take precedence on its product page. The Setup guide is documentation, not a storefront page.
+
+Favicon uploads are saved as a 128×128 PNG. Logos are optimized to at most 512 px and homepage images to 1600 px. PNG/JPG/WebP uploads are supported; SVG/ICO uploads are not. Use a square PNG for a favicon. Old uploaded images remain in history and are not automatically deleted.
+
+If another admin updates Site Details while you edit, publishing rejects the stale edit. Use **Reload saved details** to fetch the latest version; discarding unsaved changes asks for confirmation. Drafts survive connecting GitHub and moving between dashboard tabs, but are not saved after logout or a page reload.
+
+## Product pagination
+
+The collection shows up to **30 products per page**, with Previous and Next buttons when needed. Category and search filters apply before pagination, and changing either resets to page 1. The count shows the visible range and total. Cart items remain saved when browsing pages or categories. Related products on a product page keep the original three-card layout.
 
 ## Workflow details
 
@@ -84,3 +111,5 @@ The reusable product page sets title and description from the selected JSON reco
 ## Validation performed
 
 Checked in local Chromium on desktop and mobile: storefront rendering, cart persistence across refresh and page navigation, quantity-aware WhatsApp message and totals, clear-cart confirmation, admin login, image preparation/preview, product/category add/edit/delete, category deletion guard, stable slugs, escaped content, token disposal and stale-edit rejection. GitHub endpoint responses were simulated for the publishing tests; no real repository was accessed or changed. Core tests also verified non-forced branch writes, root/docs paths, failure handling, and recovery after a lost final response. Optional WebMCP registration is feature-detected and does not affect ordinary browsers.
+
+Site Details and pagination update validation: Chromium tests covered 95 products across pages and categories; filtered search; 320 px mobile pagination; all site image uploads; drafts across connection; validation; global WhatsApp links; static title/favicon/description publication; stale settings rejection; and unchanged product/category data during a settings commit. GitHub responses were simulated, and no live repository was modified.

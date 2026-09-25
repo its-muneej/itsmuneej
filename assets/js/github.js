@@ -1,3 +1,4 @@
+import {DEFAULT_SETTINGS,normalizeSettings,applyPageSettings} from './settings.js';
 import {validateCatalog} from './core.js';
 export class GitHubPublisher {
   #token;
@@ -15,10 +16,12 @@ export class GitHubPublisher {
   async snapshot(){
     const ref=await this.request('/git/ref/heads/'+encodeURIComponent(this.config.branch));
     const head=ref.object.sha;
-    const [commit,products,categories]=await Promise.all([this.request('/git/commits/'+head),this.readJSON('data/products.json',head),this.readJSON('data/categories.json',head)]);
+    const [commit,products,categories,settings]=await Promise.all([this.request('/git/commits/'+head),this.readJSON('data/products.json',head),this.readJSON('data/categories.json',head),this.readSettings(head)]);
     validateCatalog(products,categories);
-    return {head,tree:commit.tree.sha,products,categories};
+    return {head,tree:commit.tree.sha,products,categories,settings};
   }
+  async readSettings(ref){try{return normalizeSettings(await this.readJSON('data/settings.json',ref));}catch(error){if(error.status===404)return {...DEFAULT_SETTINGS};throw error;}}
+  async readText(file,ref){const response=await this.request('/contents/'+this.path(file).split('/').map(encodeURIComponent).join('/')+'?ref='+encodeURIComponent(ref),{raw:true});return response.text();}
   async readJSON(file,ref){const response=await this.request('/contents/'+this.path(file).split('/').map(encodeURIComponent).join('/')+'?ref='+encodeURIComponent(ref),{raw:true});try{return await response.json();}catch{throw new Error(file+' contains invalid JSON. Restore a working version from GitHub history.');}}
   async readImage(file,ref){if(!/^assets\/images\/[\w./-]+\.(webp|png|jpe?g)$/i.test(file)||file.includes('..'))throw new Error('Unsupported image path');const response=await this.request('/contents/'+this.path(file).split('/').map(encodeURIComponent).join('/')+'?ref='+encodeURIComponent(ref),{raw:true});return URL.createObjectURL(await response.blob());}
   async publish(mutate,image,onProgress=()=>{}){
@@ -26,12 +29,31 @@ export class GitHubPublisher {
     const snapshot=await this.snapshot();
     const result=mutate(structuredClone(snapshot));
     validateCatalog(result.products,result.categories);
+    result.settings=normalizeSettings(result.settings);
+    const settingsChanged=JSON.stringify(result.settings)!==JSON.stringify(snapshot.settings);
     const tree=[];
-    if(image){onProgress(2,'Uploading the product/category image…');const blob=await this.request('/git/blobs',{method:'POST',body:{content:image.base64,encoding:'base64'}});tree.push({path:this.path(image.path),mode:'100644',type:'blob',sha:blob.sha});}
-    else onProgress(2,'Keeping the existing image…');
-    for(const key of ['products','categories'])if(JSON.stringify(result[key])!==JSON.stringify(snapshot[key]))tree.push({path:this.path(`data/${key}.json`),mode:'100644',type:'blob',content:JSON.stringify(result[key],null,2)+'\n'});
+    const images=Array.isArray(image)?image:image?[image]:[];
+    onProgress(2,images.length?'Uploading selected images…':'Keeping existing images…');
+    for(const asset of images){
+      if(!/^assets\/images\/[\w./-]+\.(webp|png|jpe?g)$/i.test(asset.path)||asset.path.includes('..'))throw new Error('Invalid upload path.');
+      const blob=await this.request('/git/blobs',{method:'POST',body:{content:asset.base64,encoding:'base64'}});
+      tree.push({path:this.path(asset.path),mode:'100644',type:'blob',sha:blob.sha});
+    }
+    for(const key of ['products','categories','settings'])if(JSON.stringify(result[key])!==JSON.stringify(snapshot[key]))tree.push({path:this.path(`data/${key}.json`),mode:'100644',type:'blob',content:JSON.stringify(result[key],null,2)+'\n'});
+    if(settingsChanged){
+      // Keep title, description, favicon, and static homepage copy crawlable without JavaScript.
+      const pages=[['index.html','home'],['contact.html','contact'],['product.html','product'],['admin/index.html','admin']];
+      const htmlFiles=await Promise.all(pages.map(async([file,page])=>{
+        const html=await this.readText(file,snapshot.head);
+        const doc=new DOMParser().parseFromString(html,'text/html');
+        if(!doc.querySelector('script[type="module"]'))throw new Error('Expected store HTML missing from '+file+'. Upload the complete site update first.');
+        applyPageSettings(doc,result.settings,page,page==='admin'?'../':'');
+        return {path:this.path(file),mode:'100644',type:'blob',content:'<!doctype html>\n'+doc.documentElement.outerHTML+'\n'};
+      }));
+      tree.push(...htmlFiles);
+    }
     if(!tree.length)throw new Error('There are no changes to publish.');
-    onProgress(3,'Preparing one complete catalog commit…');
+    onProgress(3,'Preparing one complete store commit…');
     const nextTree=await this.request('/git/trees',{method:'POST',body:{base_tree:snapshot.tree,tree}});
     const commit=await this.request('/git/commits',{method:'POST',body:{message:result.message,tree:nextTree.sha,parents:[snapshot.head]}});
     onProgress(4,'Publishing the commit to your branch…');

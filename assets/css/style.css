@@ -6,3 +6,9 @@
 @media(max-width:700px){.hero h1{font-size:43px}.card-actions .button{font-size:11px}.hero-actions .button{padding:11px 15px;font-size:13px}}
 @media(max-width:360px){.hero h1{font-size:39px}.hero-actions{flex-wrap:wrap}}
 .product-card{display:flex;flex-direction:column}.card-body{display:flex;flex-direction:column;flex:1}.card-description{flex:1}
+
+/* Site Details uploads retain the original brand dimensions and layout. */
+.brand-logo{width:42px;height:42px;object-fit:contain;flex-shrink:0;border-radius:10px}.brand>span:last-child{overflow-wrap:anywhere}.announcement>[data-setting=announcement]{color:inherit}.hero-note>span>span{display:inline}.pagination{display:flex;justify-content:center;align-items:center;gap:24px;margin-top:36px}.pagination>span{font-size:13px;color:var(--muted);text-align:center}.pagination button:disabled{opacity:.4;cursor:default}#shop h2{scroll-margin-top:110px}.footer-top>div{min-width:0}.footer-bottom>span{overflow-wrap:anywhere}
+@media(max-width:700px){.pagination{gap:12px}.pagination .button{font-size:12px;padding:10px 14px}.pagination>span{font-size:12px}.brand-logo{width:36px;height:36px}.header-inner>.brand{min-width:0}.header-inner>.brand>span:last-child{max-width:42vw}}
+
+.brand>span:last-child{white-space:normal}.brand-mark{flex-shrink:0}
