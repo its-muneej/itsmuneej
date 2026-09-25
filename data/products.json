@@ -76,5 +76,23 @@
     "seoDescription": "A little structure. A lot more room to create.",
     "createdAt": "2026-09-25T00:00:00.000Z",
     "updatedAt": "2026-09-25T00:00:00.000Z"
+  },
+  {
+    "id": "c9436471-566a-4db9-bb81-100cbd42c9ba",
+    "createdAt": "2026-09-25T13:08:24.122Z",
+    "updatedAt": "2026-09-25T13:08:24.122Z",
+    "title": "GenFlume AI",
+    "categoryId": "cat-templates",
+    "price": 2999,
+    "oldPrice": 3999,
+    "shortDescription": "All in One AI Platform",
+    "description": "Long description",
+    "features": [],
+    "included": [],
+    "featured": false,
+    "seoTitle": "",
+    "seoDescription": "",
+    "image": "assets/images/products/c9436471-566a-4db9-bb81-100cbd42c9ba-888a5b34.webp",
+    "slug": "genflume-ai"
   }
 ]
