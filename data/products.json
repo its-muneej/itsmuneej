@@ -76,5 +76,23 @@
     "seoDescription": "A little structure. A lot more room to create.",
     "createdAt": "2026-09-25T00:00:00.000Z",
     "updatedAt": "2026-09-25T00:00:00.000Z"
+  },
+  {
+    "id": "a0fe4516-b6b5-4883-9d4f-bfbf3131df39",
+    "createdAt": "2026-09-26T00:49:29.751Z",
+    "updatedAt": "2026-09-26T00:49:29.751Z",
+    "title": "showcaseme",
+    "categoryId": "cat-templates",
+    "price": 0,
+    "oldPrice": null,
+    "shortDescription": "test",
+    "description": "test",
+    "features": [],
+    "included": [],
+    "featured": false,
+    "seoTitle": "",
+    "seoDescription": "",
+    "image": "assets/images/products/a0fe4516-b6b5-4883-9d4f-bfbf3131df39-eea62d58.webp",
+    "slug": "showcaseme"
   }
 ]
