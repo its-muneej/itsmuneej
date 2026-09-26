@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#176b51"><meta name="description" content="StoreFlow POS — sales, stock, and a clearer view of your shop. A private, offline-ready point of sale on your device.">
+<title>StoreFlow POS</title><link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="assets/icons/icon-192.png"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<aside id="sidebar" class="sidebar" aria-label="Main navigation"></aside>
+<div class="workspace"><header id="topbar" class="topbar"></header><div id="demo-banner"></div><main id="main" tabindex="-1"><div class="loading">Opening your shop…</div></main><footer class="page-footer"><span>StoreFlow POS <span class="muted">/</span> Your shop, in focus.</span><span id="connection">Saved on this device</span></footer></div>
+<nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation"></nav>
+<dialog id="dialog" aria-labelledby="dialog-title"><div id="dialog-body"></div></dialog>
+<dialog id="scanner" aria-labelledby="scanner-title"></dialog>
+<div id="toasts" class="toasts" role="status" aria-live="polite"></div><div id="print-area"></div>
+<noscript>This application needs JavaScript enabled to store products and process sales.</noscript>
+<script type="module" src="assets/js/app.js"></script>
+<script>if(location.protocol==='file:')document.getElementById('main').innerHTML='<div class="empty"><h1>Upload your shop to GitHub Pages</h1><p>Open the HTTPS website after uploading these files. Camera, database and offline features require a hosted website. See README.md for the simple setup steps.</p></div>';</script>
+</body></html>
