@@ -1,5 +1,12 @@
-import {DEFAULT_SETTINGS,normalizeSettings,applyPageSettings} from './settings.js';
+import {DEFAULT_SETTINGS,normalizeSettings,applyPageSettings,validImagePath} from './settings.js';
 import {validateCatalog} from './core.js';
+// Normalize equivalent local paths before checking whether an image is still used.
+function imagePath(value){return typeof value==='string'&&value&&validImagePath(value)?value.split('/').filter(part=>part&&part!=='.').join('/'):'';}
+function referencedImages(catalog){
+  const paths=[...catalog.products,...catalog.categories].map(item=>item.image);
+  for(const key of ['favicon','headerLogo','footerLogo','heroImage','heroPrimaryLink','heroSecondaryLink'])paths.push(catalog.settings?.[key]);
+  return new Set(paths.map(imagePath).filter(Boolean));
+}
 export class GitHubPublisher {
   #token;
   constructor(config,token){this.config={...config};this.#token=token;this.root=`/repos/${encodeURIComponent(config.owner)}/${encodeURIComponent(config.repo)}`;}
@@ -24,6 +31,38 @@ export class GitHubPublisher {
   async readText(file,ref){const response=await this.request('/contents/'+this.path(file).split('/').map(encodeURIComponent).join('/')+'?ref='+encodeURIComponent(ref),{raw:true});return response.text();}
   async readJSON(file,ref){const response=await this.request('/contents/'+this.path(file).split('/').map(encodeURIComponent).join('/')+'?ref='+encodeURIComponent(ref),{raw:true});try{return await response.json();}catch{throw new Error(file+' contains invalid JSON. Restore a working version from GitHub history.');}}
   async readImage(file,ref){if(!/^assets\/images\/[\w./-]+\.(webp|png|jpe?g)$/i.test(file)||file.includes('..'))throw new Error('Unsupported image path');const response=await this.request('/contents/'+this.path(file).split('/').map(encodeURIComponent).join('/')+'?ref='+encodeURIComponent(ref),{raw:true});return URL.createObjectURL(await response.blob());}
+  async retiredImageEntries(before,after,uploads){
+    const used=referencedImages(after);
+    // Never remove an image also being uploaded in this commit, or the built-in fallback.
+    used.add('assets/images/products/templates.webp');
+    for(const asset of uploads)used.add(imagePath(asset.path));
+    const candidates=[...new Set([...before.products,...before.categories].map(item=>item.image))].filter(path=>
+      typeof path==='string'&&/^assets\/images\/(products|categories)\/[a-zA-Z0-9_-][a-zA-Z0-9_.-]*\.(webp|png|jpe?g|gif|avif)$/i.test(path)&&!path.includes('..')&&!used.has(path)
+    );
+    if(!candidates.length)return [];
+    // Inspect only the required folders at the exact commit we loaded. GitHub rejects
+    // deletions of missing files. Non-recursive tree reads also avoid repository-wide limits.
+    const trees=new Map();
+    const readTree=sha=>{
+      if(!trees.has(sha))trees.set(sha,this.request('/git/trees/'+encodeURIComponent(sha)).then(tree=>{
+        if(tree.truncated||!Array.isArray(tree.tree))throw new Error('GitHub returned an incomplete image folder. Nothing was published. Try again or check the repository.');
+        return new Map(tree.tree.map(entry=>[entry.path,entry]));
+      }));
+      return trees.get(sha);
+    };
+    const entries=[];
+    for(const path of candidates){
+      const parts=this.path(path).split('/');let sha=before.tree,entry;
+      for(let index=0;index<parts.length;index++){
+        entry=(await readTree(sha)).get(parts[index]);
+        if(!entry)break;
+        if(index<parts.length-1){if(entry.type!=='tree'||entry.mode!=='040000'){entry=undefined;break;}sha=entry.sha;}
+      }
+      // Keep symbolic links, directories and anything outside the two catalog folders.
+      if(entry?.type==='blob'&&['100644','100755'].includes(entry.mode))entries.push({path:this.path(path),mode:entry.mode,type:'blob',sha:null});
+    }
+    return entries;
+  }
   async publish(mutate,image,onProgress=()=>{}){
     onProgress(1,'Checking the latest repository version…');
     const snapshot=await this.snapshot();
@@ -52,6 +91,9 @@ export class GitHubPublisher {
       }));
       tree.push(...htmlFiles);
     }
+    // Image removals, new uploads and catalog edits become visible together only after
+    // the final non-forced branch update succeeds. No separate delete requests are made.
+    tree.push(...await this.retiredImageEntries(snapshot,result,images));
     if(!tree.length)throw new Error('There are no changes to publish.');
     onProgress(3,'Preparing one complete store commit…');
     const nextTree=await this.request('/git/trees',{method:'POST',body:{base_tree:snapshot.tree,tree}});
