@@ -15,7 +15,7 @@ This is the free website edition with Ultra Storage branding. It includes the ex
 2. Enter the Username / Organization, Webpage name, and the branch used by your website. A blank branch uses the default.
 3. Paste your Personal Access Key and click Connect Ultra Storage. The key must authorize reading and writing the selected webpage’s contents. Your software provider can supply or help configure these details.
 4. Connect the same Ultra Storage and branch on another device to open the existing store.
-The Create a Personal Access Key link opens the existing access-key provider. The storage provider and authorization requirements have not changed.
+The storage provider and authorization requirements have not changed.
 
 ## Saving your store
 
