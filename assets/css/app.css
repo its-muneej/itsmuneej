@@ -25,3 +25,20 @@
 #repository-dialog{width:min(620px,calc(100vw - 24px));} .repo-connect{white-space:nowrap;} @media(max-width:600px){.repo-connect{font-size:11px;padding:7px 9px;}.repo-connect .icon{display:none;}.topbar .top-right{gap:6px;}}
 
 @media(max-width:760px){.page-footer{flex-wrap:wrap;gap:5px}.page-footer>#connection{display:block}}
+
+/* Full Version information uses the existing theme colors and panels. */
+.upgrade-layout{max-width:1040px;display:grid;gap:20px}
+.upgrade-intro,.upgrade-offline{display:flex;align-items:flex-start;gap:20px;padding:28px}
+.upgrade-mark{display:grid;place-items:center;flex-shrink:0;width:48px;height:48px;border-radius:12px;background:var(--soft);color:var(--green)}
+.upgrade-mark .icon{width:25px;height:25px}
+.upgrade-intro p,.upgrade-offline p,.upgrade-contact p{margin:0;line-height:1.75}
+.upgrade-credit{margin-bottom:18px!important;font-size:18px}
+.upgrade-features{padding:28px}
+.upgrade-features ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 28px;margin:0;padding:0;list-style:none}
+.upgrade-features li{display:flex;align-items:flex-start;gap:12px;line-height:1.55;font-size:14px;min-width:0}
+.upgrade-features li .icon{flex-shrink:0;color:var(--green);margin-top:1px}
+.upgrade-features li strong{font-weight:550}
+.upgrade-offline{background:var(--soft)}
+.upgrade-contact{padding:22px 28px}
+.upgrade-contact a{color:var(--green);font-weight:650;white-space:nowrap}
+@media(max-width:740px){.upgrade-intro,.upgrade-offline{padding:20px;gap:14px}.upgrade-features{padding:20px}.upgrade-features ul{grid-template-columns:1fr;gap:17px}.upgrade-contact{padding:20px}.upgrade-credit{font-size:16px}.upgrade-mark{width:38px;height:38px}.upgrade-intro{flex-direction:column}}
