@@ -1,5 +1,5 @@
 // Static interface cache only. GitHub API responses, tokens and business data are NEVER cached.
-const PREFIX='storeflow-'+self.registration.scope,CACHE=PREFIX+'ultra-v4.1.2';
+const PREFIX='storeflow-'+self.registration.scope,CACHE=PREFIX+'ultra-v4.1.3';
 self.addEventListener('install',e=>{self.skipWaiting();});
 self.addEventListener('activate',e=>e.waitUntil((async()=>{const old=(await caches.keys()).filter(k=>k.startsWith(PREFIX)&&k!==CACHE);await Promise.all(old.map(k=>caches.delete(k)));await self.clients.claim();if(old.length)for(const client of await self.clients.matchAll({type:'window'}))client.navigate(client.url);})()));
 self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET'||u.origin!==location.origin||!u.href.startsWith(self.registration.scope)||u.pathname.includes('/api/'))return;if(!(u.pathname.includes('/assets/')||u.pathname.endsWith('/index.html')||u.href===self.registration.scope||u.pathname.endsWith('/manifest.json')))return;e.respondWith((async()=>{const cache=await caches.open(CACHE);try{const response=await fetch(e.request);if(response.ok)await cache.put(e.request,response.clone());return response;}catch(error){const cached=await cache.match(e.request);if(cached)return cached;throw error;}})());});

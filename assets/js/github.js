@@ -1,5 +1,5 @@
-// GitHub is the durable store. sessionStorage holds only the tab's connection
-// and one in-flight write journal so a lost HTTP response cannot duplicate it.
+// Business records stay in GitHub. localStorage remembers the connection;
+// sessionStorage keeps each tab's in-flight write recovery journal separate.
 const API='https://api.github.com';
 const scope=new URL('../../',import.meta.url).pathname;
 const SESSION='storeflow-github:'+scope;
@@ -9,10 +9,11 @@ const clone=v=>structuredClone(v);
 const encode=v=>{const bytes=encoder.encode(v);let s='';for(let i=0;i<bytes.length;i+=16384)s+=String.fromCharCode(...bytes.subarray(i,i+16384));return btoa(s);};
 const decode=s=>decoder.decode(Uint8Array.from(atob(s.replace(/\s/g,'')),c=>c.charCodeAt(0)));
 export class Repository {
- constructor(fetcher=(...args)=>fetch(...args),storage=sessionStorage){this.fetcher=fetcher;this.storage=storage;this.config=null;this.cached=new Map();this.state='disconnected';this.lastSync=0;this.pending=false;this.cooldown=0;}
+ constructor(fetcher=(...args)=>fetch(...args),storage=sessionStorage,connections=null){this.fetcher=fetcher;this.storage=storage;this.connections=connections;this.config=null;this.cached=new Map();this.state='disconnected';this.lastSync=0;this.pending=false;this.cooldown=0;}
+ get connectionStorage(){return this.connections||localStorage;}
  notify(state){this.state=state;if(state==='saved')this.lastSync=Date.now();window.dispatchEvent(new CustomEvent('storeflow:connection'));}
  get connected(){return !!this.config;}
- get details(){if(!this.config)return null;const {owner,repo,branch}=this.config;return {owner,repo,branch};}
+ get details(){let saved=this.config;if(!saved){try{saved=JSON.parse(this.connectionStorage.getItem(SESSION)||'null');}catch{}}if(!saved)return null;const {owner,repo,branch}=saved;return {owner,repo,branch};}
  get root(){return '/repos/'+encodeURIComponent(this.config.owner)+'/'+encodeURIComponent(this.config.repo);}
  async request(path,method='GET',payload){
   if(!this.config)throw new Error('Connect Ultra Storage to make this change.');
@@ -38,12 +39,13 @@ export class Repository {
   try{const meta=await this.request(this.root);if(meta.archived)throw new Error('This Ultra Storage is archived and cannot save changes.');this.config.branch=branch||meta.default_branch;
    await this.request(this.root+'/branches/'+encodeURIComponent(this.config.branch));
    const existing=this.storage.getItem(JOURNAL);if(existing){const j=JSON.parse(existing);if(j.repository!==this.identity())throw new Error('Reconnect the original Ultra Storage first to resolve its pending save.');}
-   this.storage.setItem(SESSION,JSON.stringify(this.config));this.cached.clear();this.notify('connected');
+   try{this.connectionStorage.setItem(SESSION,JSON.stringify(this.config));}catch{throw new Error('This browser could not remember the connection. Allow this website to save browser data, then connect again.');}
+   try{this.storage.removeItem(SESSION);}catch{}this.cached.clear();this.notify('connected');
   }catch(e){this.config=previous;this.notify(previous?'error':'disconnected');throw e;}
  }
  identity(){return [this.config.owner.toLowerCase(),this.config.repo.toLowerCase(),this.config.branch].join('/');}
- async restore(){const raw=this.storage.getItem(SESSION);if(!raw)return false;const input=JSON.parse(raw);await this.connect(input);return true;}
- disconnect(){if(this.storage.getItem(JOURNAL))throw new Error('Retry the pending save before disconnecting.');this.storage.removeItem(SESSION);this.config=null;this.cached.clear();this.notify('disconnected');}
+ async restore(){let remembered;try{remembered=this.connectionStorage.getItem(SESSION);}catch{throw new Error('This browser cannot read saved connection details. Allow this website to use browser storage.');}const raw=remembered===null?this.storage.getItem(SESSION):remembered;if(!raw||raw==='null')return false;let input;try{input=JSON.parse(raw);}catch{throw new Error('Saved connection details could not be read. Connect Ultra Storage again.');}await this.connect(input);return true;}
+ disconnect(){if(this.storage.getItem(JOURNAL))throw new Error('Retry the pending save before disconnecting.');try{this.connectionStorage.setItem(SESSION,'null');}catch{throw new Error('This browser could not forget the saved connection. Clear this website’s browser data to remove it.');}this.storage.removeItem(SESSION);this.config=null;this.cached.clear();this.notify('disconnected');}
  require(){if(!this.connected){window.dispatchEvent(new Event('storeflow:connect-required'));throw new Error('Connect Ultra Storage to make this change.');}}
  async read(path){
   this.require();let meta;

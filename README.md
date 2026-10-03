@@ -19,12 +19,12 @@ The storage provider and authorization requirements have not changed.
 
 ## Saving your store
 
-Products, images, categories, brands, stock, sales, returns, expenses, settings and saved bills continue to save together. Changes require a connected session. Wait for the saved status before closing a tab. A connection is normally needed once per browser-tab session; page refresh reuses that session. Use Disconnect when finished on a shared device.
+Products, images, categories, brands, stock, sales, returns, expenses, settings and saved bills continue to save together. Changes require a connected session. Wait for the saved status before closing a tab. Enter your connection details once on each browser. They are saved automatically, including the Personal Access Key, and reused after closing tabs or restarting the browser. Disconnect & forget removes the saved details; clearing site data or resetting the browser also removes them. Use this only on a trusted device. Private browsing and automatic site-data cleanup may not retain the connection. A key that expires or is revoked must be replaced. Disconnect any other already-open tabs separately.
 Internet is required to confirm saves. If a save is unconfirmed, use Settings → Retry save; do not repeat an unconfirmed checkout as a new sale. Refresh from Ultra Storage loads the latest records. Existing conflict checks and interrupted-save recovery are unchanged.
 
 ## Your data files
 
-The permanent files remain data/storeflow.json for the real store and data/storeflow-demo.json for the separate demo workspace. The app creates them after the first change. Keep these files when updating. File formats, backup compatibility, key handling and browser-session identifiers are unchanged.
+The permanent files remain data/storeflow.json for the real store and data/storeflow-demo.json for the separate demo workspace. The app creates them after the first change. Keep these files when updating. Business file formats and backup compatibility are unchanged. Connection details are kept in this browser’s local storage; interrupted-save recovery stays separate in each tab’s session storage. Credentials are never added to business files or exports.
 This edition still uses public website storage: published business records are publicly readable. The Personal Access Key authorizes changes; it does not make public data private. Renaming the interface does not hide publicly delivered website source code.
 Each save sends the full workspace file. The existing 45 MiB file limit, connection limits and permissions still apply. Search uses the loaded store snapshot.
 
@@ -36,7 +36,7 @@ Contact: +92 304 4428162
 
 ## What changed in this package
 
-Visible storage names, connection labels, status and error messages now use Ultra Storage. The three explanatory paragraphs were removed from the connection window. The Get full version page was added using the existing design style. The interface cache version was advanced so updated files can load. The storage API, access-key checks, save logic and business data structures have not changed.
+Visible storage names, connection labels, status and error messages now use Ultra Storage. The three explanatory paragraphs were removed from the connection window. The Get full version page was added using the existing design style. The interface cache version was advanced so updated files can load. Connection details now persist in the browser. Existing tab connections migrate automatically after successful verification. The storage API, access-key checks, business save logic and data structures remain unchanged. No login page or data encryption has been added.
 
 ## Files changed
 
