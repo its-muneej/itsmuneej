@@ -18,7 +18,7 @@ function validateData(data){const copy=structuredClone(data);if(!copy.settings.s
 function accept(snapshot){
  if(!snapshot.document){cache=blank();return;}
  const doc=snapshot.document;
- for(const n of STORES){if(!Array.isArray(doc.data[n]))throw new Error('Ultra Storage data is missing '+n+'. Restore a complete backup before saving.');const ids=new Set();for(const r of doc.data[n]){if(!r||typeof r.id!=='string'||!/^[A-Za-z0-9:_-]{1,150}$/.test(r.id)||ids.has(r.id))throw new Error('Ultra Storage data has invalid or duplicate records. It was not overwritten.');ids.add(r.id);}}
+ for(const n of STORES){if(!Array.isArray(doc.data[n]))throw new Error('Repository data is missing '+n+'. Restore a complete backup before saving.');const ids=new Set();for(const r of doc.data[n]){if(!r||typeof r.id!=='string'||!/^[A-Za-z0-9:_-]{1,150}$/.test(r.id)||ids.has(r.id))throw new Error('Repository data has invalid or duplicate records. It was not overwritten.');ids.add(r.id);}}
  validateData(doc.data);
  if(epoch&&epoch!==doc.epoch)generation++;epoch=doc.epoch;cache=structuredClone(doc.data);
 }
